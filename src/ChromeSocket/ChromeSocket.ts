@@ -87,7 +87,7 @@ class ChromeSocket {
         return new ChromeSocket(socketId);
     }
 
-    private on<K extends ChromeSocketEvent>(event: K, listener: (data: ChromeSocketEventResponse[K]) => void) {
+    public on<K extends ChromeSocketEvent>(event: K, listener: (data: ChromeSocketEventResponse[K]) => void) {
         if(!this.listeners[event]) {
             this.listeners[event] = [];
         }
