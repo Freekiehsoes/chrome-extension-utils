@@ -1,12 +1,12 @@
-import ChromeSocket from "./ChromeSocket/ChromeSocket";
+import {ComTunnel} from "./ComTunnel/ComTunnel";
 
 const Extension = {
-    socket: {
+    ComTunnel: {
         create: () => {
-            return ChromeSocket.create();
+            return ComTunnel.create();
         },
         connect: (socketId: string) => {
-            return ChromeSocket.connect(socketId);
+            return ComTunnel.connect(socketId);
         }
     }
 }
