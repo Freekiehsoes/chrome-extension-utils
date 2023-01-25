@@ -1,0 +1,30 @@
+{
+  "name": "@freek.attema/chrome-extension-utils",
+  "version": "1.0.3",
+  "description": "",
+  "main": "lib/Extension.js",
+  "types": "lib/Extension.d.ts",
+  "scripts": {
+    "build": " tsc && cp -r public lib",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Freekiehsoes/chrome-extension-utils.git"
+  },
+  "keywords": [],
+  "author": "Freek Attema",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chrome": "^0.0.210",
+    "typescript": "^4.9.4"
+  },
+  "files": [
+    "lib/**/*",
+    "public/**/*"
+  ],
+  "assets": [
+    "public/**/*"
+  ]
+}
