@@ -26,18 +26,18 @@ type ChromeSocketEventResponse = {
 }
 
 class ChromeSocket {
-    private socketId: string;
+    private readonly id: string;
     private listeners: { [key: string]: ChromeSocketListener[] } = {};
 
     private constructor(socketId: string = null) {
-        this.socketId = socketId || this.generateSocketId();
+        this.id = socketId || this.generateSocketId();
 
         chrome.runtime.onMessage.addListener((message) => {
             if(message.action !== 'chrome-socket-action') {
                 return;
             }
 
-            if(message.socketId !== this.socketId) {
+            if(message.id !== this.id) {
                 return;
             }
 
@@ -53,6 +53,10 @@ class ChromeSocket {
 
             return true;
         });
+    }
+
+    public getId() {
+        return this.id;
     }
 
     private getSenderType(): ChromeSocketSenderType {
@@ -93,11 +97,11 @@ class ChromeSocket {
 
     public emit(event: string, ...args: any[]) {
         if(this.getSenderType() === ChromeSocketSenderType.CONTENT_SCRIPT) {
-            chrome.runtime.sendMessage({ socketId: this.socketId, event, args }).then(()=> {});
+            chrome.runtime.sendMessage({ socketId: this.id, event, args }).then(()=> {});
         } else {
             chrome.tabs.query({}, tabs => {
                 tabs.forEach(tab => {
-                    chrome.tabs.sendMessage(tab.id, {socketId: this.socketId, event, args}).then(() =>{});
+                    chrome.tabs.sendMessage(tab.id, {socketId: this.id, event, args}).then(() =>{});
                 });
             });
         }
