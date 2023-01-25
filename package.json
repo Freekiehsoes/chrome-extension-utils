@@ -1,6 +1,6 @@
 {
   "name": "@freek.attema/chrome-extension-utils",
-  "version": "1.0.5",
+  "version": "1.0.51",
   "description": "",
   "main": "lib/Extension.js",
   "types": "lib/Extension.d.ts",

@@ -1,17 +1,17 @@
-type ChromeSocketListener = (data: any) => void;
+export type ChromeSocketListener = (data: any) => void;
 
-enum ChromeSocketSenderType {
+export enum ChromeSocketSenderType {
     CONTENT_SCRIPT = "content_script",
     BACKGROUND = "background",
 }
 
-enum ChromeSocketEvent {
+export enum ChromeSocketEvent {
     CONNECT = "connect",
     MESSAGE = "message",
     DISCONNECT = "disconnect",
 }
 
-type ChromeSocketEventResponse = {
+export type ChromeSocketEventResponse = {
     [ChromeSocketEvent.CONNECT]: {
         from: ChromeSocketSenderType;
         socketId: number;
